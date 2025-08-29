@@ -1,57 +1,66 @@
-﻿using Extensions;
+﻿using Extra.Extensions;
 
 namespace EveryType;
 
 /// <summary>
-/// The <c>That</c> class provides facilities for obtaining the <see cref="Type"/>s in the current <see cref="AppDomain"/>
-/// that satisfy an arbitrary predicate.
+/// The <c>That</c> class provides facilities for obtaining the <see cref="Type" />s
+/// in the current <see cref="AppDomain" /> that satisfy an arbitrary predicate.
 /// </summary>
-public class That
+public static class That
 {
-    private static readonly ISet<Type> ConcreteTypes = AppDomain.CurrentDomain.GetAssemblies()
-        .SelectMany(assembly => assembly.GetTypes())
-        .WhereNot(type => type.IsInterface || type.IsAbstract)
-        .ToHashSet();
-    
+    private static readonly ISet<Type> ConcreteTypes = AppDomain
+                                                      .CurrentDomain
+                                                      .GetAssemblies()
+                                                      .SelectMany(assembly => assembly.GetTypes())
+                                                      .WhereNot(type => type.IsInterface || type.IsAbstract)
+                                                      .ToHashSet();
+
     /// <summary>
-    /// Provides the <see cref="Type"/>s in the current <see cref="AppDomain"/> that are annotated by <typeparamref
-    /// name="TAttribute"/>.
+    /// Provides the <see cref="Type" />s in the current <see cref="AppDomain" /> that
+    /// are annotated by <typeparamref name="TAttribute" />.
     /// </summary>
-    /// <typeparam name="TAttribute">The <see cref="Type"/> of <see cref="Attribute"/> that annotates the queried types.</typeparam>
-    /// <returns>A collection of <see cref="Type"/>s.</returns>
-    public static IEnumerable<Type> HasAttribute<TAttribute>() where TAttribute : Attribute
+    /// <typeparam name="TAttribute">
+    /// The <see cref="Type" /> of <see cref="Attribute" /> that annotates the queried
+    /// types.
+    /// </typeparam>
+    /// <returns>A collection of <see cref="Type" />s.</returns>
+    public static IEnumerable<Type> HasCustomAttribute<TAttribute>() where TAttribute : Attribute
     {
         return ConcreteTypes.Where(type => type.HasCustomAttribute<TAttribute>());
     }
 
     /// <summary>
-    /// Provides the <see cref="Type"/>s in the current <see cref="AppDomain"/> that implement or extend <typeparamref
-    /// name="TInterface"/>.
+    /// Provides the <see cref="Type" />s in the current <see cref="AppDomain" /> that
+    /// implement or extend <typeparamref name="T" />.
     /// </summary>
-    /// <typeparam name="TInterface">The <see cref="Type"/> that the queried types implement.</typeparam>
-    /// <returns>A collection of <see cref="Type"/>s.</returns>
-    public static IEnumerable<Type> IsAssignableTo<TInterface>()
+    /// <typeparam name="T">
+    /// The <see cref="Type" /> that the queried types belong to.
+    /// </typeparam>
+    /// <returns>A collection of <see cref="Type" />s.</returns>
+    public static IEnumerable<Type> IsAssignableTo<T>()
     {
-        return IsAssignableTo(typeof(TInterface));
+        return IsAssignableTo(typeof(T));
     }
 
     /// <summary>
-    /// Provides the <see cref="Type"/>s in the current <see cref="AppDomain"/> that implement or extend the specified
-    /// <paramref name="type"/>.
+    /// Provides the <see cref="Type" />s in the current <see cref="AppDomain" /> that
+    /// implement or extend the specified <paramref name="type" />.
     /// </summary>
-    /// <param name="type">The <see cref="Type"/> that the queried types implement.</param>
-    /// <returns>A collection of <see cref="Type"/>s.</returns>
+    /// <param name="type">The <see cref="Type" /> that the queried types implement.</param>
+    /// <returns>A collection of <see cref="Type" />s.</returns>
     public static IEnumerable<Type> IsAssignableTo(Type type)
     {
         return ConcreteTypes.Where(candidate => candidate.IsAssignableTo(type));
     }
 
     /// <summary>
-    /// Provides the <see cref="Type"/>s in the current <see cref="AppDomain"/> that satisfy the specified <paramref
-    /// name="predicate"/>.
+    /// Provides the <see cref="Type" />s in the current <see cref="AppDomain" /> that
+    /// satisfy the specified <paramref name="predicate" />.
     /// </summary>
-    /// <param name="predicate">A function from <see cref="Type"/> to <see cref="bool"/>.</param>
-    /// <returns>A collection of <see cref="Type"/>s.</returns>
+    /// <param name="predicate">
+    /// A function from <see cref="Type" /> to <see cref="bool" />.
+    /// </param>
+    /// <returns>A collection of <see cref="Type" />s.</returns>
     public static IEnumerable<Type> Satisfies(Func<Type, bool> predicate)
     {
         return ConcreteTypes.Where(predicate);

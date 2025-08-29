@@ -1,0 +1,10 @@
+### YamlMime:TableOfContent
+items:
+  - uid: EveryType
+    name: EveryType
+    type: Namespace
+    items:
+      - uid: EveryType.That
+        name: That
+        type: Class
+memberLayout: SamePage

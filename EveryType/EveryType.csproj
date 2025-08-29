@@ -5,12 +5,28 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>EveryType</Title>
+        <Authors>Jeff Wilgus</Authors>
+        <Description>A library for obtaining every .NET type.</Description>
+        <Copyright>Jeff Wilgus</Copyright>
+        <PackageProjectUrl>https://jeffrey-w.github.io/EveryType/</PackageProjectUrl>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+        <RepositoryUrl>https://github.com/jeffrey-w/EveryType</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageIcon>logo.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Version>1.0.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
-      <Reference Include="Extensions">
-        <HintPath>..\..\Extensions\Extensions\bin\Debug\net9.0\Extensions.dll</HintPath>
-      </Reference>
+        <PackageReference Include="Extra.Extensions" Version="1.0.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../LICENSE.md" Pack="true" PackagePath=""/>
+        <None Include="../README.md" Pack="true" PackagePath=""/>
+        <None Include="../logo.png" Pack="true" PackagePath=""/>
     </ItemGroup>
 
 </Project>

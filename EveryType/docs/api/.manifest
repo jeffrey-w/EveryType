@@ -1,0 +1,8 @@
+{
+    "EveryType": "EveryType.yml",
+    "EveryType.That": "EveryType.That.yml",
+    "EveryType.That.HasCustomAttribute``1": "EveryType.That.yml",
+    "EveryType.That.IsAssignableTo(System.Type)": "EveryType.That.yml",
+    "EveryType.That.IsAssignableTo``1": "EveryType.That.yml",
+    "EveryType.That.Satisfies(System.Func{System.Type,System.Boolean})": "EveryType.That.yml"
+    }

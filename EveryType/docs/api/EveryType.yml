@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+  - uid: EveryType
+    commentId: N:EveryType
+    id: EveryType
+    children:
+      - EveryType.That
+    langs:
+      - csharp
+      - vb
+    name: EveryType
+    nameWithType: EveryType
+    fullName: EveryType
+    type: Namespace
+    assemblies:
+      - EveryType
+references:
+  - uid: EveryType.That
+    commentId: T:EveryType.That
+    href: EveryType.That.html
+    name: That
+    nameWithType: That
+    fullName: EveryType.That
