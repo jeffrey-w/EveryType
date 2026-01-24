@@ -16,11 +16,11 @@
         <RepositoryType>git</RepositoryType>
         <PackageIcon>logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Extra.Extensions" Version="1.4.2" />
+        <PackageReference Include="Extra.Extensions" Version="1.5.0" />
     </ItemGroup>
 
     <ItemGroup>
