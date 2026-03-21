@@ -20,7 +20,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Extra.Extensions" Version="1.5.0" />
+        <PackageReference Include="Extra.Extensions" Version="1.6.0" />
     </ItemGroup>
 
     <ItemGroup>
